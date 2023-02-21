@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title> Spotify - Web Player</title>
+    <link rel = "icon" href = "img/logo.png" type = "image/x-icon">
+</head>
+
+<body onload="myFunc()">
+    <div id="preloader"></div>
+    <div class="container">
+        <div class="sidebar-container">
+            <div class="sidebar">
+
+                <div class="resizer"></div>
+
+                <div class="spotify_logo">
+                    <svg fill="#fff" viewBox="0 0 1134 340" height="40" class="logo">
+                    <title>Spotify</title>
+                    <path fill="#fff"
+                        d="M8 171c0 92 76 168 168 168s168-76 168-168S268 4 176 4 8 79 8 171zm230 78c-39-24-89-30-147-17-14 2-16-18-4-20 64-15 118-8 162 19 11 7 0 24-11 18zm17-45c-45-28-114-36-167-20-17 5-23-21-7-25 61-18 136-9 188 23 14 9 0 31-14 22zM80 133c-17 6-28-23-9-30 59-18 159-15 221 22 17 9 1 37-17 27-54-32-144-35-195-19zm379 91c-17 0-33-6-47-20-1 0-1 1-1 1l-16 19c-1 1-1 2 0 3 18 16 40 24 64 24 34 0 55-19 55-47 0-24-15-37-50-46-29-7-34-12-34-22s10-16 23-16 25 5 39 15c0 0 1 1 2 1s1-1 1-1l14-20c1-1 1-1 0-2-16-13-35-20-56-20-31 0-53 19-53 46 0 29 20 38 52 46 28 6 32 12 32 22 0 11-10 17-25 17zm95-77v-13c0-1-1-2-2-2h-26c-1 0-2 1-2 2v147c0 1 1 2 2 2h26c1 0 2-1 2-2v-46c10 11 21 16 36 16 27 0 54-21 54-61s-27-60-54-60c-15 0-26 5-36 17zm30 78c-18 0-31-15-31-35s13-34 31-34 30 14 30 34-12 35-30 35zm68-34c0 34 27 60 62 60s62-27 62-61-26-60-61-60-63 27-63 61zm30-1c0-20 13-34 32-34s33 15 33 35-13 34-32 34-33-15-33-35zm140-58v-29c0-1 0-2-1-2h-26c-1 0-2 1-2 2v29h-13c-1 0-2 1-2 2v22c0 1 1 2 2 2h13v58c0 23 11 35 34 35 9 0 18-2 25-6 1 0 1-1 1-2v-21c0-1 0-2-1-2h-2c-5 3-11 4-16 4-8 0-12-4-12-12v-54h30c1 0 2-1 2-2v-22c0-1-1-2-2-2h-30zm129-3c0-11 4-15 13-15 5 0 10 0 15 2h1s1-1 1-2V93c0-1 0-2-1-2-5-2-12-3-22-3-24 0-36 14-36 39v5h-13c-1 0-2 1-2 2v22c0 1 1 2 2 2h13v89c0 1 1 2 2 2h26c1 0 1-1 1-2v-89h25l37 89c-4 9-8 11-14 11-5 0-10-1-15-4h-1l-1 1-9 19c0 1 0 3 1 3 9 5 17 7 27 7 19 0 30-9 39-33l45-116v-2c0-1-1-1-2-1h-27c-1 0-1 1-1 2l-28 78-30-78c0-1-1-2-2-2h-44v-3zm-83 3c-1 0-2 1-2 2v113c0 1 1 2 2 2h26c1 0 1-1 1-2V134c0-1 0-2-1-2h-26zm-6-33c0 10 9 19 19 19s18-9 18-19-8-18-18-18-19 8-19 18zm245 69c10 0 19-8 19-18s-9-18-19-18-18 8-18 18 8 18 18 18zm0-34c9 0 17 7 17 16s-8 16-17 16-16-7-16-16 7-16 16-16zm4 18c3-1 5-3 5-6 0-4-4-6-8-6h-8v19h5v-6h5l4 6h5zm-3-9c2 0 4 1 4 3s-2 3-4 3h-4v-6h5z">
+                    </path>
+                    </svg>
+                </div>
+
+                <ul class="side_panel">
+                
+                <li class="links">
+                    <img src="img/home.svg">
+                    <a target="blank" href="#">Home</a>
+                </li>
+                
+                <li class="links">
+                    <img src="img/search.svg">
+                    <a target="blank" href="#">Search</a>
+                </li>
+
+                <li class="links">
+                    <img src="img/library.svg">
+                    <a target="blank" href="#">Your Library</a>
+                </li>
+            </ul>
+
+            <div class="create_liked">
+                <ul>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="25" fill="#000"
+                            class=" bi bi-plus-square" viewBox="0 0 16 16">
+                            <path
+                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        </svg><a target="blank" href="#">Create Playlist</a>
+                    </li>
+
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#9b9b9b" class="heart" viewBox="0 0 512 512" height="25" style="background: linear-gradient(125deg,#451FB4,#5c5c5c); padding:6px 6px;border-radius:3px">
+                            <path
+                                d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z" />
+                        </svg>
+                        <a target="blank" href="#">Liked Songs</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="playlists">
+                <li><a href="liked.html" target="blank">Liked Songs</a>
+                </li>
+                <li><a target="blank" href="https://open.spotify.com/playlist/2tuEqhcmROaygNiMbvy7GM">Swarg</a></li>
+                <li><a target="blank" href="https://open.spotify.com/playlist/6NkgwlvVxbvnrrPUuiJmTM">Best of Bolly</a>
+                </li>
+                <li><a target="blank" href="https://open.spotify.com/playlist/3RGcmEpDEKOXNJwN3Ta8co">O = G</a></li>
+                <li><a target="blank" href="https://open.spotify.com/playlist/5wNdMXXNLLT8ZwJ9TrbdEl">Favs in Eng</a>
+                </li>
+                <li><a target="blank" href="#">This is Bobby Darin</a></li>
+                <li><a target="blank" href="#">This is John Mayer</a></li>
+                <li><a target="blank" href="#">This is Sonu Nigam</a></li>
+                <li><a target="blank" href="#">This is Queen</a></li>
+                <li><a target="blank" href="#">Rock Music</a></li>
+                <li><a target="blank" href="#">Bollywood</a></li>
+                <li><a target="blank" href="#">Rockstar</a></li>
+                <li><a target="blank" href="#">Rang de basanti</a></li>
+                <li><a target="blank" href="#">Kabir Singh</a></li>
+                <li><a target="blank" href="#">Ashiqui 2</a></li>
+                <li><a target="blank" href="#">This is Arijit Singh</a></li>
+                <li><a target="blank" href="#">This is AC/DC</a></li>
+                <li><a target="blank" href="#">Mohit Chauhan</a></li>
+                <li><a target="blank" href="#">Kishor Kumar</a></li>
+                <li><a target="blank" href="#">Mukesh</a></li>
+            </div>
+            <div class="install_app">
+                <a target="blank" href="#"><svg width="22" height="22" viewBox="0 0 434 434" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="217" cy="217" r="197" stroke="#aaaaaa" stroke-width="40" />
+                        <line x1="216.999" y1="72.1562" x2="214.999" y2="328.156" stroke="#aaaaaa" stroke-width="40" />
+                        <line x1="117.019" y1="236.793" x2="219.075" y2="352.854" stroke="#aaaaaa" stroke-width="40" />
+                        <line x1="325.083" y1="245.321" x2="194.856" y2="354.595" stroke="#aaaaaa" stroke-width="40" />
+                    </svg></a>
+                <a target="blank" href="#">Install App</a>
+            </div>
+        </div>
+        </div>
+
+        <div class="main_container">
+
+            <nav class="main_nav">
+                <div class="back_front">
+                    <button>
+                        <svg fill="#9c9c9c" role="img" height="22" width="22" viewBox="0 0 24 24">
+                            <path
+                                d="M15.957 2.793a1 1 0 010 1.414L8.164 12l7.793 7.793a1 1 0 11-1.414 1.414L5.336 12l9.207-9.207a1 1 0 011.414 0z">
+                            </path>
+                        </svg>
+                    </button>
+                    <button>
+                        <svg fill="#9c9c9c" role="img" height="22" width="22" viewBox="0 0 24 24">
+                            <path
+                                d="M8.043 2.793a1 1 0 000 1.414L15.836 12l-7.793 7.793a1 1 0 101.414 1.414L18.664 12 9.457 2.793a1 1 0 00-1.414 0z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="btn">
+                    <button class="Upgrade_btn">Upgrade</button>
+                    <button class="account_btn"><img src="img/profile.jpg" height="28"> Soham
+                        <svg fill="#fff" role="img" height="16" width="16"
+                            class="Svg-ytk21e-0 jAKAlG eAXFT6yvz37fvS1lmt6k" viewBox="0 0 16 16">
+                            <path d="M14 6l-6 6-6-6h12z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            <div class="greeting">
+                <h1 id="time"></h1>
+            </div>
+
+            <div class="card_container">
+                <div class="most-listened">
+                    <div class="card">
+                        <img class="card_img" src="img/liked songs.png" title="Liked Songs">
+                        <div class="ls_link">
+                            <a class="Playlist_links" target="blank" href="https://open.spotify.com/collection/tracks"
+                                title="liked Songs">Liked Songs</a>
+                            <a class="play" target="blank" href="https://open.spotify.com/collection/tracks"><svg xmlns="http://www.w3.org/2000/svg" role="img" height="24" width="24" viewBox="0 0 24 24" class="Svg-ytk21e-0 jAKAlG"><path d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z" /></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card_img" src="img/B.O.B.png" title="Liked Songs">
+                        <div class="ls_link">
+                            <a class="Playlist_links" target="blank"
+                                href="https://open.spotify.com/playlist/6NkgwlvVxbvnrrPUuiJmTM" title="liked Songs">Best of
+                                Bolly</a>
+                            <a class="play" target="blank"
+                                href="https://open.spotify.com/playlist/6NkgwlvVxbvnrrPUuiJmTM"><svg
+                                    xmlns="http://www.w3.org/2000/svg" role="img" height="24" width="24" viewBox="0 0 24 24"
+                                    class="Svg-ytk21e-0 jAKAlG">
+                                    <path
+                                        d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z" />
+                                </svg></a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card_img" src="img/O=G.png" title="Liked Songs">
+                        <div class="ls_link">
+                            <a class="Playlist_links" target="blank"
+                                href="https://open.spotify.com/playlist/3RGcmEpDEKOXNJwN3Ta8co" title="liked Songs">Old is
+                            Gold</a>
+                            <a class="play" target="blank"
+                                href="https://open.spotify.com/playlist/3RGcmEpDEKOXNJwN3Ta8co"><svg
+                                    xmlns="http://www.w3.org/2000/svg" role="img" height="24" width="24" viewBox="0 0 24 24"
+                                    class="Svg-ytk21e-0 jAKAlG">
+                                    <path
+                                        d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z" />
+                                </svg></a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card_img" src="img/Eng.jpg" title="Liked Songs">
+                        <div class="ls_link">
+                            <a class="Playlist_links" target="blank"
+                                href="https://open.spotify.com/playlist/5wNdMXXNLLT8ZwJ9TrbdEl" title="liked Songs">Favs in
+                                Eng</a>
+                            <a class="play" target="blank"
+                                href="https://open.spotify.com/playlist/5wNdMXXNLLT8ZwJ9TrbdEl"><svg
+                                    xmlns="http://www.w3.org/2000/svg" role="img" height="24" width="24" viewBox="0 0 24 24"
+                                    class="Svg-ytk21e-0 jAKAlG">
+                                    <path
+                                        d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z" />
+                                </svg></a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card_img" src="img/Swarg.png" title="Liked Songs">
+                        <div class="ls_link">
+                            <a class="Playlist_links" target="blank"
+                                href="https://open.spotify.com/playlist/2tuEqhcmROaygNiMbvy7GM"
+                                title="liked Songs">Swarg</a>
+                            <a class="play" target="blank"
+                                href="https://open.spotify.com/playlist/2tuEqhcmROaygNiMbvy7GM"><svg
+                                    xmlns="http://www.w3.org/2000/svg" role="img" height="24" width="24" viewBox="0 0 24 24"
+                                    class="Svg-ytk21e-0 jAKAlG">
+                                    <path
+                                        d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z" />
+                                </svg></a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card_img" src="img/john_mayer.jpg" title="Liked Songs">
+                        <div class="ls_link">
+                            <a class="Playlist_links" target="blank"
+                                href="https://open.spotify.com/playlist/37i9dQZF1DWYrlaUEYy4Vg" title="liked Songs">This is
+                                John Mayer</a>
+                            <a class="play" target="blank"
+                                href="https://open.spotify.com/playlist/37i9dQZF1DWYrlaUEYy4Vg"><svg
+                                    xmlns="http://www.w3.org/2000/svg" role="img" height="24" width="24" viewBox="0 0 24 24"
+                                    class="Svg-ytk21e-0 jAKAlG">
+                                    <path
+                                        d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z" />
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Your top mixes</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/blues_mix.jpg" height="200px">
+                            <h5>Blues Mix</h5>
+                            <p>Muddy Waters, Eric Clapton...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/rock.jpg" height="200px">
+                            <h5>Rock Mix</h5>
+                            <p>The Black Keys, AC/DC...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/romantic.jpg" height="200px">
+                            <h5>Romantic mix</h5>
+                            <p>Bobby Darin, AR Rehman...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/chill_mix.jpg" height="200px">
+                            <h5>Chill Mix</h5>
+                            <p>Elton John, Verzache & more...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/happy.jpg" height="200px">
+                            <h5>Happy mix</h5>
+                            <p>Shawn Mendes, Bruno Mars & more...</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Recently Played</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/john_mayer.jpg" height="200px">
+                            <h5>This is John Mayer</h5>
+                            <p>John Mayers new album Sob Rock...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/Eng.jpg" height="200px">
+                            <h5>Favs in Eng</h5>
+                            <p>Best Playlist that'll change your vibe...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/hindi.jpg" height="200px">
+                            <h5>Hindi Mix</h5>
+                            <p>Pritam, Shankar-Ehsaan-Loy...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/O=G.png" height="200px">
+                            <h5>Old is Gold</h5>
+                            <p>This Playlist will Take you Back to 19th C.E</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/B.O.B.png" height="200px">
+                            <h5>Best Of Bolly</h5>
+                            <p>A Glimpse of Heaven...</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Best Of Artists</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/john_mayer.jpg" height="200px">
+                            <h5>This is John Mayer</h5>
+                            <p>John Mayers new album Sob Rock...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/AR_Rehman.jpg" height="200px">
+                            <h5>This is AR Rehman</h5>
+                            <p>The Master of Music...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/pritam.jpg" height="200px">
+                            <h5>This is Pritam</h5>
+                            <p>The essential tracks, all in o...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/bobby.jpg" height="200px">
+                            <h5>This is Bobby Darin</h5>
+                            <p>He Got an Amazing Voice...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/beatles.jpg" height="200px">
+                            <h5>This is The Beatles</h5>
+                            <p>Shawn Mendes, Charlie Puth & more...</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Jump Back In</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/dm2.jpg" height="200px">
+                            <h5>Daily Mix 2</h5>
+                            <p>American Authors, Ben Rector...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/warm.jpg" height="200px">
+                            <h5>Warm Fuzzy Feeling</h5>
+                            <p>The Master of Music...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/popular1.jpg" height="200px">
+                            <h5>Kabir Singh</h5>
+                            <p>Various Artists...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/discover.jpg" height="200px">
+                            <h5>Discover Weakly</h5>
+                            <p>Your weakly mixtape of fresh music...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/pop.jpg" height="200px">
+                            <h5>Pop mix</h5>
+                            <p>Shawn Mendes, Bruno Mars, JVKE</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Episodes for you</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/beruthless.jpg" height="200px">
+                            <h5>BE RUTHLESS</h5>
+                            <p style="font-size: 11px;">Aug 13 . 22 Min</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/neverquit.jpg" height="200px">
+                            <h5>NEVER QUIT ME...</h5>
+                            <p style="font-size: 11px;">Aug 11 . 5 Min</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/summer.jpg" height="200px">
+                            <h5>Summer Learning..</h5>
+                            <p style="font-size: 11px;">Aug 2 . 19 Min</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/jim.jpg" height="200px">
+                            <h5>jim Rohn - Self D...</h5>
+                            <p style="font-size: 11px;">Sept 2021 . 14 Min</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/believe.jpg" height="200px">
+                            <h5>BELIEVE - SPEECH..</h5>
+                            <p style="font-size: 11px;">Jun 16 . 83 Min</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">India's Best</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/bollybutter.jpg" height="200px">
+                            <h5>Bollywood Butter</h5>
+                            <p>The Finest Quality of Bollywood Music</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/punjabi.jpg" height="200px">
+                            <h5>Punjabi 101</h5>
+                            <p>Ultimate 101 Punjabi Hits</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/kollywood.jpg" height="200px">
+                            <h5>Kollywood Cream</h5>
+                            <p>Sid Sriram, Arijit Singh, Anirudh...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/indie.jpg" height="200px">
+                            <h5>Indie India</h5>
+                            <p>Aditya A, Mitraz, Kavita Seth...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/tollywood.jpg" height="200px">
+                            <h5>Tollywood Pearls</h5>
+                            <p>The Finest Set of Telugu Music...</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Fans Of Queen</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/queen1.jpg" height="200px">
+                            <h5>This is Queen</h5>
+                            <p>An essential track. All in one Playlist.</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/queen2.jpg" height="200px">
+                            <h5>Queen Radio</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/queen3.jpg" height="200px">
+                            <h5>Who Wants To Live</h5>
+                            <p>Helena Fischer, Queen...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/queen4.jpg" height="200px">
+                            <h5>Rock Classics</h5>
+                            <p>Rock Legends & Epic Songs</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/queen5.jpg" height="200px">
+                            <h5>All Out 80s</h5>
+                            <p>The Biggest Songs of 1980s</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Made For You</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/dm1.jpg" height="200px">
+                            <h5>Daily Mix 1</h5>
+                            <p>Pritam, AR Rehman...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/dm2.jpg" height="200px">
+                            <h5>Daily Mix 2</h5>
+                            <p>Bobby Darin, Frank Sinatra...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/dm3.jpg" height="200px">
+                            <h5>Daily Mix 3</h5>
+                            <p>Queen, Elton Joy, The Beatles...</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/dm4.jpg" height="200px">
+                            <h5>Daily Mix 4</h5>
+                            <p>Westlife, Charlie Puth, One Direction</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/dm5.jpg" height="200px">
+                            <h5>Daily Mix 5</h5>
+                            <p>Shawn Mendes, Charlie Puth & more...</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Recomended radio</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/radio1.jpg" height="200px">
+                            <h5>Ed Sheeran Radio</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/radio2.jpg" height="200px">
+                            <h5>Taylor Swift Radio</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/radio3.jpg" height="200px">
+                            <h5>Charlie Puth Radio</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/radio4.jpg" height="200px">
+                            <h5>Music Travel Love</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/radio5.jpg" height="200px">
+                            <h5>Ben Ractor Radio</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Sad songs</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/sad1.jpg" height="200px">
+                            <h5>Life Sucks</h5>
+                            <p>Having a bad day? We know how it feels!</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/sad2.jpg" height="200px">
+                            <h5>Sad Beats</h5>
+                            <p>Electronic Melancholy</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/sad3.jpg" height="200px">
+                            <h5>Sad Covers</h5>
+                            <p>Acoustic Covers Of Sad songs.</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/sad4.jpg" height="200px">
+                            <h5>Rainy Day Jazz</h5>
+                            <p>Soft and moody jazz for a rainy day.</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/sad5.jpg" height="200px">
+                            <h5>Melancholy Instru...</h5>
+                            <p>Beautifully sad piano music</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top_mixes">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Mood</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/mood1.jpg" height="200px">
+                            <h5>Mood Booster</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/mood2.jpg" height="200px">
+                            <h5>Feelin Good</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/mood3.jpg" height="200px">
+                            <h5>Feel Good Piano</h5>
+                            <p>By Spotify.</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/mood4.jpg" height="200px">
+                            <h5>Feel Good Beats</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/mood5.jpg" height="200px">
+                            <h5>You & Me</h5>
+                            <p>By Spotify</p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="top_mixes last">
+                <div class="top_mixes_link">
+                    <div class="tm_links">
+                        <a class="tm_heading" target="blank" href="#">Popular albums</a>
+                        <a class="see_all" target="blank" href="#">see all</a>
+                    </div>
+                </div>
+                <div class="tm_cards">
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/popular1.jpg" height="200px">
+                            <h5>Kabir Singh</h5>
+                            <p>Various Artists</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/popular2.jpg" height="200px">
+                            <h5>Ashiqui 2</h5>
+                            <p>Mithoon, Ankit Tiwari, Jeet Gannguli</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/popular3.jpg" height="200px">
+                            <h5>FOUR(Deluxe)</h5>
+                            <p>One Direction</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/popular4.jpg" height="200px">
+                            <h5>Chaand Baaliyan</h5>
+                            <p>Aditya A</p>
+                        </a>
+                    </div>
+                    <div class="top_mixes_card">
+                        <a target="blank" href="#">
+                            <img src="img/popular5.jpg" height="200px">
+                            <h5>Yeh Jawaani Hai De...</h5>
+                            <p>Pritam</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="socials">
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/soham-bharti/" target="_blank"><svg fill="#fff" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a></li>
+
+                    <li><a href="https://twitter.com/_soham_27" target="_blank"><svg fill="#fff" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></a></li>
+
+                    <li><a href="https://www.instagram.com/_soham_27/" target="_blank"><svg fill="#fff" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a></li>
+
+                    <li><a href="https://www.facebook.com/soham.S7" target="_blank"><svg fill="#fff" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg></a></li>
+
+                    <li>
+                        <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlDTMJQbQrsLLcHDHJzjmrWHnKLDQMhXkcTJBCrRZcFBBSgZPmhdMnMDQtpVtwNmJMrgZL" target="_blank">
+                            <svg fill="#fff" height="40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="resizer.js"></script>
+
+    <script>
+        function greeting() {
+            let hour = new Date().getHours();
+            if (hour >= 4 && hour <= 11) return 'morning';
+            if (hour >= 12 && hour <= 16) return 'afternoon';
+            if (hour >= 17 && hour <= 23) return 'evening';
+            if (hour >= 24 || hour <= 3) return 'night';
+        }
+        document.getElementById("time").innerHTML = ('Good ' + greeting());
+    </script>
+
+    <script>
+        var loader = document.getElementById("preloader");
+
+        function myFunc() {
+            preloader.style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
